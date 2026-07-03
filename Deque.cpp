@@ -8,6 +8,16 @@
 namespace cs32 {
 
 template <typename Type>
+std::vector<Type> Deque<Type>::toVector() const
+{
+	std::vector<Type> result;
+	DequeNode<Type> * node = head;
+	while ( node != nullptr ) { result.push_back( node->getElement() ); node = node->getNext(); }
+	return( result );
+}
+
+
+template <typename Type>
 Deque<Type>::Deque()
 {
     head = nullptr;
