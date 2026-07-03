@@ -1,87 +1,73 @@
 #include "Garage.h"
+#include <vector>
 
 namespace cs32
 {
 
-
-Garage::Garage( size_t capacity )  : mCapacity( capacity )
+Garage::Garage( size_t capacity ) : mCapacity( capacity )
 {}
 
-// put something in the garage
-// silently, it purges something once the garage is full
+// put something in the garage; silently purges the oldest item once full
 bool Garage::tossIn( std::string s )
 {
-    if ( mCapacity <= mDeque.size() ) { //if the size meets the capacity
-        mDeque.deleteRear(); //delete the last node
-        mDeque.addToFront( s ); //add the new data to the front
-        return true;
-    } //if the size doesn't meet the capacity, just add the new data to the front
-    mDeque.addToFront( s );
-    return false;
+	if ( mCapacity <= mDeque.size() ) {
+		mDeque.deleteRear();
+		mDeque.addToFront( s );
+		return true;
+	}
+	mDeque.addToFront( s );
+	return false;
 }
 
 bool Garage::tossOut( std::string s )
 {
-    if ( !mDeque.isEmpty() ) {
-        if ( mDeque.deleteItem( s ) )
-            return( true );
-    }
-    return( false );
+	if ( !mDeque.isEmpty() )
+		return( mDeque.deleteItem( s ) );
+	return( false );
 }
 
-
-// use something from the garage
-// must be findable, then moved to the used pile
+// use something from the garage; if found, move it to the front (used pile)
 bool Garage::use( std::string s )
 {
-    if ( !mDeque.isEmpty() ) {
-        if ( mDeque.deleteItem( s ) ) { //if the data is found, delete it and add it to the front
-            mDeque.addToFront( s );
-            return( true );
-        }
-    }
-    return( false );
+	if ( !mDeque.isEmpty() && mDeque.deleteItem( s ) ) {
+		mDeque.addToFront( s );
+		return( true );
+	}
+	return( false );
 }
 
-// is it in the garage?
+// is it in the garage?  (single O(n) pass instead of O(n^2))
 bool Garage::find( std::string s )
 {
-    std::string data;
-    for ( int i = 0; i < mDeque.size(); i++ ) {
-        mDeque.get( i, data ); //get the data of each node
-        if ( data == s ) //if the data meets string s, return true
-            return( true );
-    }
-    return( false );
+	for ( const std::string & data : mDeque.toVector() )
+		if ( data == s )
+			return( true );
+	return( false );
 }
 
-// how much can this garage maximally hold?
 size_t Garage::capacity()
 {
-    return( mCapacity );
+	return( mCapacity );
 }
-// how much is in this garage right now?
+
 size_t Garage::size( )
 {
-    return( mDeque.size() );
+	return( mDeque.size() );
 }
 
 std::string Garage::printItems( )
 {
-    std::string s = "";
-    if ( mDeque.isEmpty() ) s += "---> Empty Garage";
-    else {
-        s += "front"; //print from the front
-        for ( int i = 0; i < mDeque.size(); i++ ) {
-            s += " -> ";
-            std::string data;
-            mDeque.get( i, data );
-            s += data;
-        }
-        s += " -> rear";
-    }
-    return( s );
+	std::string s = "";
+	if ( mDeque.isEmpty() ) s += "---> Empty Garage";
+	else {
+		s += "front";
+		for ( const std::string & data : mDeque.toVector() ) {
+			s += " -> ";
+			s += data;
+		}
+		s += " -> rear";
+	}
+	return( s );
 }
-
 
 }
