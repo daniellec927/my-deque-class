@@ -41,7 +41,6 @@ private:
 	DequeNode<Type> * head;
     DequeNode<Type> * tail;
     
-    // Howard is providing a helper function to help you print your Deque elements
     std::string to_string( const Type & value ) const;
 };
 
