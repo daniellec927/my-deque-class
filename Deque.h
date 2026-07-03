@@ -7,7 +7,7 @@
 #include "DequeNode.cpp"
 
 
-namespace cs32 {
+namespace core {
 
 template <typename Type>
 class Deque {
