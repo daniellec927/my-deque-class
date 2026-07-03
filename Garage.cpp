@@ -1,7 +1,7 @@
 #include "Garage.h"
 #include <vector>
 
-namespace cs32
+namespace core
 {
 
 Garage::Garage( size_t capacity ) : mCapacity( capacity )
