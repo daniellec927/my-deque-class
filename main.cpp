@@ -18,7 +18,6 @@ int main()
     using namespace std;
     using namespace cs32;
     
-    // TODO: CS 32 students should add testing code here
     DequeNode< int > sampleNode( 5 );
     Deque< string > sampleDeque;
     Deque< int > otherDeque;
