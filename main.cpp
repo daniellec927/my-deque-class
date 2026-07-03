@@ -41,7 +41,7 @@ int main()
     dString.addToFront( s );
     s = "World!";
     dString.addToRear( s );
-    s = "Howard";
+    s = "Alex";
     assert( dString.deleteItem( s ) == false );
     assert( dString.size( ) == 2 );
     assert( dString.get( -10, s ) == false );
