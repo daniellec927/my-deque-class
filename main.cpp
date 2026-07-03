@@ -16,7 +16,7 @@
 int main()
 {
     using namespace std;
-    using namespace cs32;
+    using namespace core;
     
     DequeNode< int > sampleNode( 5 );
     Deque< string > sampleDeque;
