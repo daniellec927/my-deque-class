@@ -178,7 +178,6 @@ void Deque<Type>::deleteRear( )
     }
 }
 
-// Howard is supplying code to convert a Type to a string using its operator <<
 template <typename Type>
 std::string Deque<Type>::to_string( const Type & value ) const
 {
@@ -231,7 +230,6 @@ std::string Deque<Type>::printItemsBackward( ) const
 // Deep copy of linked list
 template <typename Type>
 const Deque<Type> & Deque<Type>::operator =( const Deque<Type> & rhs ) {
-    // TODO: CS 32 Students to complete code here
     if ( this != &rhs ){
         makeEmpty();
         
