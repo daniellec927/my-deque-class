@@ -6,7 +6,7 @@
 #include "Deque.cpp"
 
 
-namespace cs32
+namespace core
 {
 
 class Garage
