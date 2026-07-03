@@ -2,6 +2,7 @@
 #define DEQUE_H
 #include <iostream>
 #include <string>
+#include <vector>
 #include "DequeNode.h"
 #include "DequeNode.cpp"
 
@@ -33,6 +34,7 @@ public:
     size_t size() const;
     bool   get( int i, Type & data ) const;
     std::string printItems( ) const;
+	std::vector<Type> toVector( ) const;
     /*std::string printItemsBackward( ) const;*/
 
 private:
