@@ -5,7 +5,7 @@
 #include <string>
 #include <sstream>
 
-namespace cs32 {
+namespace core {
 
 template <typename Type>
 std::vector<Type> Deque<Type>::toVector() const
