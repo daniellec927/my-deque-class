@@ -5,7 +5,7 @@
 #include "DequeNode.h"
 using namespace std;
 
-namespace cs32 {
+namespace core {
 
 template <typename Type>
 DequeNode<Type>::DequeNode( const Type& v, DequeNode * node, DequeNode * pre )
